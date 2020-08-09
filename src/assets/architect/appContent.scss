@@ -1,0 +1,7 @@
+.appContent {
+    display: grid;
+    grid-template-rows: 2.8em calc(100vh - 5.8em);
+    margin-top: 3em;
+    width: 100vw;
+    height: calc(100vh - 3em);
+}

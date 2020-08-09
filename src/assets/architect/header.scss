@@ -1,0 +1,508 @@
+.header {
+    position: fixed;
+    top: 0;
+    background-color: #557cf2;
+    width: 100vw;
+    height: 3em;
+
+    .navHeader {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+
+        .navBrand {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .dashAction {
+                width: 3em;
+                height: 3em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .openDash {
+                    background-color: transparent;
+                    border: none;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0;
+                    cursor: pointer;
+
+                    .bzIcon {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        svg {
+                            height: 1.2em;
+                        }
+                    }
+
+                    &:focus {
+                        outline: none;
+                        background-color: rgba(0, 0, 0, .1);
+                    }
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, .1);
+                    }
+                }
+            }
+
+            .brandText {
+                .container {
+                    padding: 0 .5em;
+
+                    span {
+                        color: #ffffff;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .dashOptions {
+                position: fixed;
+                top: 0;
+                left: 0;
+                box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
+                background-color: #ffffff;
+                display: grid;
+
+                &.hiden {
+                    height: 50vh;
+                    grid-template-rows: 3em calc(50vh - 3em);
+                    transition: .2s;
+                    left: -100vw;
+                    top: -150vh;
+                }
+
+                &.active {
+                    width: 24vw;
+                    min-width: 320px;
+                    height: 100vh;
+                    grid-template-rows: 3em calc(100vh - 3em);
+                    transition: .2s;
+                }
+
+                .dashBar {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .dashItem {
+                        display: flex;
+                        align-items: center;
+                        padding: .4em;
+
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            padding: 0;
+                        }
+
+                        .openDash {
+                            width: 2.8em;
+                            height: 2.8em;
+                            cursor: pointer;
+
+                            .bzIcon {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                svg {
+                                    height: 1.1em;
+                                    fill: #252423;
+                                }
+                            }
+
+                            &:focus {
+                                outline: none;
+                                background-color: rgba(0, 0, 0, .1);
+                            }
+
+                            &:hover {
+                                background-color: rgba(0, 0, 0, .1);
+                            }
+                        }
+
+                        .openDashFullScreen {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            height: 2.8em;
+                            cursor: pointer;
+
+                            span {
+                                color: #004A26;
+                                font-weight: 600;
+                                transition: border-bottom-color 83ms linear;
+                                padding: 3px 0 2px 0;
+                            }
+
+                            .bzIcon {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                width: 3em;
+
+                                svg {
+                                    height: 1.2em;
+                                    fill: none;
+                                    stroke: #252423;
+                                }
+                            }
+
+                            &:focus {
+                                outline: none;
+                                background-color: none;
+
+                                span {
+                                    border-bottom: 1px solid;
+                                    border-bottom: 1px solid;
+                                    padding-bottom: 1px;
+                                }
+                            }
+
+                            &:hover {
+                                background-color: none;
+
+                                span {
+                                    border-bottom: 1px solid;
+                                    border-bottom: 1px solid;
+                                    padding-bottom: 1px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                .dashMain {
+                    display: grid;
+                    grid-template-rows: 4.5em auto 2em;
+
+                    .dashTitle {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: flex-end;
+
+                        span {
+                            padding: .5em .5em;
+                            font-size: 1.4rem;
+                            font-weight: 600;
+                            color: #252423;
+                        }
+                    }
+
+                    .listApps {
+                        height: 100%;
+                        padding: .5em .3em;
+                        display: grid;
+                        grid-template-columns: 50% 50%;
+                        grid-auto-rows: 3.5em;
+
+                        .app {
+                            height: 2.5em;
+                            display: flex;
+                            align-items: center;
+                            padding: .4em .6em;
+                            border: 1px solid transparent !important;
+                            transition: border-color 83ms linear, box-shadow 83ms linear;
+                            cursor: pointer;
+
+                            &:hover {
+                                border-color: #f4f4f4 !important;
+                                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .1);
+                                transition: border-color .167s linear, box-shadow .167s linear;
+                            }
+
+                            .appIcon {
+                                width: 1.5em;
+                                height: 100%;
+                            }
+
+                            .appLabel {
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                font-weight: 500;
+                                font-size: .9rem;
+                                padding: 0 .8em;
+                                color: #252423;
+                                white-space: nowrap;
+                            }
+
+                        }
+                    }
+
+                    .dashCopyright {
+                        display: flex;
+                        align-items: center;
+                        padding: 0 1em;
+
+                        .copyrightAnchor {
+                            font-size: .7rem;
+                            font-weight: 600;
+                            text-decoration: none;
+                            color: rgba(37, 36, 35, .5);
+
+                            &:hover {
+                                color: rgba(37, 36, 35, .7);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .navActions {
+            display: grid;
+            grid-template-columns: 70% 30%;
+
+            .appActions {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    width: 3em;
+                    height: 3em;
+
+                    button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent;
+                        border: none;
+                        padding: 0;
+
+                        .icon {
+                            width: 1.55em;
+                            height: 1.55em;
+                            padding: .4em;
+                            border-radius: 50%;
+
+                            &.userIcon {
+                                background-color: #E3008C;
+                            }
+                        }
+
+                        &:focus {
+                            outline: none;
+                            border: none;
+                        }
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, .1);
+                        }
+
+                    }
+
+                    .navNotificationStatus {
+                        position: absolute;
+                        margin-bottom: 1em;
+                        margin-left: 1em;
+                        width: 1em;
+                        height: 1em;
+                        border-radius: 50%;
+                        background-color: #1d3ea1;
+                        color: white;
+                        display: flex;
+                        justify-content: center;
+                        transition: .3s;
+
+                        .ntiCounter {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            color: rgb(255, 255, 255);
+                            font-size: .6rem;
+                            font-weight: 600;
+                            cursor: inherit;
+                        }
+
+                    }
+
+                    .userStatus {
+                        background-color: #6BB700;
+                        border-radius: 50%;
+                        border: 2px solid #ffffff;
+                        position: absolute;
+                        width: .5em;
+                        height: .5em;
+                        margin-left: 1.15em;
+                        margin-top: 1.35em;
+                    }
+
+                    &.user {
+                        transition: .5s;
+
+                        &.active {
+                            button {
+                                background-color: #F3F2F1;
+
+                                &:hover {
+                                    background-color: rgba(0, 0, 0, .5);
+                                }
+                            }
+                        }
+                        .userSidebar {
+                            background-color: #FAF9F8;
+                            position: fixed;
+                            top: 3em;
+                            right: 0;
+                            height: calc(100vh - 3em);
+                            width: 23vw;
+                            min-width: 320px;
+                            box-shadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px 0px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
+                            border-color: #EDEBE9;
+                            cursor: default;
+
+                            &.hiden {
+                                transition: .6s;
+                                right: -100vw;
+                            }
+            
+                            &.active {
+                                transition: .6s;
+                            }
+
+                            .userSidebarHeader {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                height: 4em;
+
+                                .titleSidebar {
+                                    font-size: 1.25rem;
+                                    font-weight: 600;
+                                    margin-left: .8em;
+                                    color: #252423;
+                                }
+
+                                .closeSidebar {
+                                    width: 3em;
+                                    height: 3em;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    button {
+                                        width: 2.9em;
+                                        height: 2.9em;
+                                        padding: .7em;
+                                        background-color: transparent;
+                                        border: none;
+                                        cursor: pointer;
+
+                                        .bzIcon {
+                                            svg {
+                                                fill: none;
+                                                stroke: #484644;
+                                                opacity: .8;
+                                            }
+
+                                        }
+
+                                        &:hover {
+                                            background-color: rgba(0, 0, 0, .1);
+                                        }
+
+
+                                    }
+                                }
+                            }
+
+                            .sidebarContent {
+                                display: flex;
+                                background-color: #FFFFFF;
+                                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                                box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                                padding: .2em;
+
+                                .sidebarAvatar {
+                                    display: flex;
+                                    align-items: center;
+                                    padding: .5em;
+                                    .icon {
+                                        background-color: #E3008C;
+                                        width: 4.5em;
+                                        height: 4.5em;
+                                        border-radius: 50%;
+                                        padding: .7em;
+                                    }
+                                }
+                                .sidebarResume {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+                                    padding: 1.1em 0;
+
+                                    .userName {
+                                        font-size: 1.1rem;
+                                        font-weight: 600;
+                                    }
+                                    .userEmail {
+                                        font-size: .9rem;
+                                        font-weight: 400;
+                                        color: #252423;
+                                    }
+
+                                    .moreInfos {
+                                        padding: .2em 0;
+                                        display: flex;
+                                        flex-direction: column;
+
+                                        a {
+                                            font-weight: 600;
+                                            color: #501792;
+                                            text-decoration: none;
+                                            font-size: .9rem;
+                                            margin: 0;
+                                            line-height: 1rem;
+
+                                            &:hover {
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+
+
+                    &:hover {
+
+                        .navNotificationStatus {
+                            background-color: #ffffff;
+
+                            .ntiCounter {
+                                color: #1d3ea1;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
