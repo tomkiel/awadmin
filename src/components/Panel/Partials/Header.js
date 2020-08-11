@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 //icons //
 import {
@@ -11,35 +12,42 @@ import {
     ArrowUpRightIcon
 } from '../../Icons/index';
 
-const Header = () => {
+const Header = ({
+    classColor = ''
+}) => {
 
     let state = {
         dashActive: false,
         services: [
-            { label: 'E-mails', icon: 'assets/images/enviar.svg' },
-            { label: 'Sites', icon: 'assets/images/empilhados.svg' },
-            { label: 'Bancos de dados', icon: 'assets/images/servidor-sql.svg' },
-            { label: 'Arquivos', icon: 'assets/images/pasta.svg' },
-            { label: 'Relatórios', icon: 'assets/images/grafico.svg' },
-            { label: 'Financeiro', icon: 'assets/images/dolar.svg' },
-            { label: 'Ajuda', icon: 'assets/images/socorro.svg' }
+            { label: 'E-mails', icon: 'assets/images/enviar.svg', route: '/' },
+            { label: 'Sites', icon: 'assets/images/empilhados.svg', route: 'websites' },
+            { label: 'Bancos de dados', icon: 'assets/images/servidor-sql.svg', route: '/' },
+            { label: 'Arquivos', icon: 'assets/images/pasta.svg', route: '/' },
+            { label: 'Relatórios', icon: 'assets/images/grafico.svg', route: '/' },
+            { label: 'Financeiro', icon: 'assets/images/dolar.svg', route: '/' },
+            { label: 'Ajuda', icon: 'assets/images/socorro.svg', route: '/' }
         ]
     };
-
+    const history = useHistory();
     const dispatch = useDispatch();
     const dashShow = useSelector(state => state.dashShow);
     const userSidebar = useSelector(state => state.userSidebar);
 
     const toggleDash = () => {
         dispatch({ type: 'set', dashShow: !dashShow });
-    }
+    };
 
     const toggleUserSidebar = () => {
         dispatch({ type: 'set', userSidebar: !userSidebar });
-    }
+    };
+
+    const toRoute = (route) => {
+        dispatch({ type: 'set', dashShow: false });
+        history.push(route);
+    };
 
     return (
-        <div className="header">
+        <div className={`header ${classColor ? classColor : ""}`} >
             <nav className="navHeader">
                 <div className="navBrand">
                     <div className="dashAction">
@@ -49,10 +57,10 @@ const Header = () => {
                     </div>
                     <div className="brandText">
                         <div className="container">
-                            <span>Umba Host</span>
+                            <span>awadmin host</span>
                         </div>
                     </div>
-                    <div className={`dashOptions ${dashShow ? "active" : "hiden"}`}>
+                    <div className={`dashOptions ${dashShow ? "active" : "hiden"}`} >
                         <div className="dashBar">
                             <div className="dashItem">
                                 <button className="openDash" onClick={toggleDash}>
@@ -61,7 +69,7 @@ const Header = () => {
                             </div>
                             <div className="dashItem">
                                 <button className="openDashFullScreen">
-                                    <span>umbahost</span>
+                                    <span>awadmin</span>
                                     <ArrowUpRightIcon></ArrowUpRightIcon>
                                 </button>
                             </div>
@@ -73,16 +81,16 @@ const Header = () => {
                             </div>
                             <div className="listApps">
 
-                                {state.services.map(service => (
-                                    <div className="app">
-                                        <img className="appIcon" src={service.icon} alt={service.label + ' image icon'} ></img>
+                                {state.services.map((service, i) => (
+                                    <button className="app" onClick={() => toRoute(service.route)} key={i}>
+                                        <img className="appIcon" src={service.icon} alt={service.label + ' image icon'}></img>
                                         <span className="appLabel">{service.label}</span>
-                                    </div>
+                                    </button>
                                 ))}
 
                             </div>
                             <div className="dashCopyright">
-                                <a href='/' className="copyrightAnchor">© 2020 MyReactJS App/Regis Tomkiel</a>
+                                <a href='/' className="copyrightAnchor">© 2020 awadmin/Regis Tomkiel</a>
                             </div>
                         </div>
 

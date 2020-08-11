@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-
+import React, { useEffect } from "react";
 
 import { 
     Header, 
@@ -7,14 +6,14 @@ import {
 } from '../../components/index';
 
 const Home = () => {
-    
+
     useEffect(() => {
-        document.title = 'Awadmin Panel'
+        document.title = 'Awadmin Panel - Websites'
     });
 
     return (
         <div className="app">
-            <Header classColor='home'></Header>
+            <Header classColor='websites'></Header>
             <div className="appContent">
                 <TollBar>
                     

@@ -11,6 +11,7 @@ const loading = (
 
 /// Pages
 const HomePanel = React.lazy(() => import('../pages/Panel/Home'));
+const Websites = React.lazy(() => import('../pages/Panel/Websites'));
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -29,12 +30,13 @@ class Routes extends Component {
     render() {
         return (
             <BrowserRouter>
-                <React.Suspense fallback={loading}>
-                    <Switch>
-                        <Route exact path="/index" component={() => <h1>Hello Listen!</h1>} />
-                        <PrivateRoute path="/" name="Home Panel" component={props => <HomePanel {...props} />} />
-                    </Switch>
-                </React.Suspense>
+                <Switch>
+                    <React.Suspense fallback={loading}>
+                        <Route exact path="/df" component={() => <h1>Hello Listen!</h1>} />
+                        <PrivateRoute exact path="/" name="Home Panel" component={props => <HomePanel {...props} />} />
+                        <PrivateRoute exact path="/websites" name="Websites" component={props => <Websites {...props} />} />
+                    </React.Suspense>
+                </Switch>
             </BrowserRouter>
         );
     }

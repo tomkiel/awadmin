@@ -1,7 +1,6 @@
 .header {
     position: fixed;
     top: 0;
-    background-color: #557cf2;
     width: 100vw;
     height: 3em;
 
@@ -209,18 +208,23 @@
                         grid-auto-rows: 3.5em;
 
                         .app {
-                            height: 2.5em;
+                            //height: 2.5em;
                             display: flex;
                             align-items: center;
                             padding: .4em .6em;
                             border: 1px solid transparent !important;
                             transition: border-color 83ms linear, box-shadow 83ms linear;
+                            background-color: transparent;
                             cursor: pointer;
 
-                            &:hover {
+                            &:hover, &:focus {
                                 border-color: #f4f4f4 !important;
                                 box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .1);
                                 transition: border-color .167s linear, box-shadow .167s linear;
+                            }
+
+                            &:focus {
+                                outline: none;
                             }
 
                             .appIcon {
